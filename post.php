@@ -19,6 +19,7 @@
         else
             echo "เป็นกระทู้หมายเลขคี่";
         ?>
+        
     <table style="border: 2px solid black; width: 40%;" align="center">
         <tr><td colspan="2" style="background-color: #6cd2fe;">แสดงความคิดเห็น</td></tr>
         <tr><td align="center">
