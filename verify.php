@@ -10,44 +10,41 @@ if(isset($_SESSION['id'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webboard</title>
+    <title>Verify</title>
 </head>
 <body>
-
-    <div style="text-align: center;">
-
-       <?php
+    <hr>
+    <center>
+    <?php
+        session_start();
+        if (isset($_SESSION['id'])){
+            header("location: index.php");
+            die();
+        }
         $login=$_POST["login"];
         $pwd=$_POST["password"];
-        if($login=="admin" && $pwd=="ad1234"){
-            $_SESSION['username']='admin';
-            $_SESSION['role']='a';
+        $conn=new PDO("mysql:host=localhost;dbname=webboard1;charset=utf8","root","");
+        $sql="SELECT * FROM user where login='$login' and password=sha1('$pwd')";
+        $result=$conn->query($sql);
+        if($result->rowCount()==1){
+            $data=$result->fetch(PDO::FETCH_ASSOC);
+            $_SESSION['username']=$date['login'];
+            $_SESSION['role']=$date['role'];
+            $_SESSION['user_id']=$date['id'];
             $_SESSION['id']=session_id();
             header("location:index.php");
             die();
-           // echo "ยินดีต้อนรับคุณ ADMIN <br>";
-            //echo "<a href=index.php>กลับไปหน้าหลัก</a>";
+            //echo"ยินดีต้อนรับคุณ ADMIN <br>";
+            //echo"<a href=index.php>กลับไปหน้าหลัก</a>";
         }
-        elseif($login=="member" && $pwd=="mem1234")
-        {
-            $_SESSION['username']='member';
-            $_SESSION['role']='m';
-            $_SESSION['id']=session_id();
-            header("location:index.php");
-            die();
-            //echo "ยินดีต้อนรับคุณ MEMBER <br>";
-            //echo "<a href=index.php>กลับไปหน้าหลัก</a>";
-        }
-        else
-        {
+        else{
             $_SESSION['error']='error';
             header("location:login.php");
             die();
-            //echo "ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง<br>";
-            //echo "<a href=login.php>กลับไปหน้าหลัก</a>";
+            //echo"บัญชีหรือรหัสผ่านไม่ถูกต้อง <br>";
+            //echo"<a href=index.php>กลับไปหน้าหลัก</a>";
         }
-       ?>
-
-</div>
+        $conn=null;
+    ?>
 </body>
 </html>

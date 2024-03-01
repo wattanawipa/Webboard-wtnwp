@@ -29,15 +29,15 @@ if(!isset($_SESSION['id'])){
                             <div class="row">
                                 <label class="col-lg-3 col-form-label">หมวดหมู่ :</label>
                                 <div class="col-lg-9">
-                                    <select name="category" class="form-select">
-                                    <?php 
-                                        $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+                                <select name="category" class="form-select">
+                                        <?php 
+                                        $conn=new PDO("mysql:host=localhost;dbname=webboard1;charset=utf8","root","");
                                         $sql="SELECT * FROM category";
                                         foreach($conn->query($sql) as $row){
-                                            echo "<option value=$row[id]>$roe[name]</option>";
+                                            echo "<option value=$row[id]>$row[name]</option>";
                                         }
                                         $conn=null;
-                                    ?>
+                                        ?>
                                     </select>
                                 </div>
                             </div>
