@@ -24,7 +24,7 @@ if(!isset($_SESSION['id'])){
             <div class="col-lg-6 col-md-8 col-sm-10">
                 <div class="card border-success mt-3">
                     <?php
-                    $conn=new PDO("mysql:host=localhost;dbname=wedboard1;charset=utf8","root","");
+                    $conn=new PDO("mysql:host=localhost;dbname=webboard1;charset=utf8","root","");
                     $sql="SELECT post.title,post.content,post.post_date,user.login 
                     FROM post INNER JOIN user ON (post.user_id=user.id) WHERE post.id=$_GET[id]";
                     $result=$conn->query($sql);
