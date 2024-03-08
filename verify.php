@@ -23,14 +23,14 @@ if(isset($_SESSION['id'])){
         }
         $login=$_POST["login"];
         $pwd=$_POST["password"];
-        $conn=new PDO("mysql:host=localhost;dbname=webboard1;charset=utf8","root","");
+        $conn=new PDO("mysql:host=localhost;dbname=wedboard1;charset=utf8","root","");
         $sql="SELECT * FROM user where login='$login' and password=sha1('$pwd')";
         $result=$conn->query($sql);
         if($result->rowCount()==1){
             $data=$result->fetch(PDO::FETCH_ASSOC);
-            $_SESSION['username']=$date['login'];
-            $_SESSION['role']=$date['role'];
-            $_SESSION['user_id']=$date['id'];
+            $_SESSION['username']=$data['login'];
+            $_SESSION['role']=$data['role'];
+            $_SESSION['user_id']=$data['id'];
             $_SESSION['id']=session_id();
             header("location:index.php");
             die();

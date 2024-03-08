@@ -27,11 +27,11 @@ if(!isset($_SESSION['id'])){
                         แสดงความคิดเห็น</div>
                     <div class="card-body">
                         <form action="post_save.php" method="post">
-                            <input type="hidden" name="post_id"
-                                value="<?=$_GET['id'];?>">
+                            <input type="hidden" name="post_id" value="<?= $_GET['id'];?>">
                                 <div class="row mb-3 justify-content-center">
                                     <div class="col-lg-10">
-                                        <textarea name="comment" rows="8" class="form-control" required> </textarea>
+                                        <textarea name="comment" rows="8" 
+                                        class="form-control" required> </textarea>
                                     </div>
                                 </div>
                             <div class="row">
