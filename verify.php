@@ -13,8 +13,6 @@ if(isset($_SESSION['id'])){
     <title>Verify</title>
 </head>
 <body>
-    <hr>
-    <center>
     <?php
         session_start();
         if (isset($_SESSION['id'])){
