@@ -1,9 +1,5 @@
 <?php
 session_start();
-if(!isset($_SESSION['id'])){
-    header("location:index.php");
-    die();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +20,7 @@ if(!isset($_SESSION['id'])){
             <div class="col-lg-6 col-md-8 col-sm-10">
                 <div class="card border-success mt-3">
                     <?php
-                    $conn=new PDO("mysql:host=localhost;dbname=webboard1;charset=utf8","root","");
+                    $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
                     $sql="SELECT post.title,post.content,post.post_date,user.login 
                     FROM post INNER JOIN user ON (post.user_id=user.id) WHERE post.id=$_GET[id]";
                     $result=$conn->query($sql);
@@ -34,9 +30,22 @@ if(!isset($_SESSION['id'])){
                    echo "<div class='card-body'>$row[content]<br><br>$row[3]-$row[2]</div>";
                     echo "</div>";
                 }
+
+                $sql="SELECT comment.content,comment.post_date,user.login
+                    FROM comment INNER JOIN user ON (comment.user_id=user.id) WHERE comment.post_id=$_GET[id]";
+                    $result=$conn->query($sql);
+                    $i=1;
+                    while($row=$result->fetch()){
+                   echo "<div class='card border-info mt-3'>";
+                   echo "<div class='card-header bg-info text-white'>ความคิดเห็นที่ $i</div>";
+                   echo "<div class='card-body'>$row[content]<br><br>$row[2]-$row[1]</div>";
+                    echo "</div>";
+                    $i=$i+1;
+                }
                     ?>
 
-                    <div class="card-header bg-success text-white">
+                    <?php if(isset($_SESSION['id'])){ ?>
+                    <div class="card-header bg-success  mt-3">
                         แสดงความคิดเห็น</div>
                     <div class="card-body">
                         <form action="post_save.php" method="post">
@@ -58,6 +67,7 @@ if(!isset($_SESSION['id'])){
                             </div>
                         </form>
                     </div>
+                    <?php } ?>
                 </div>
                 <br>
             </div>
