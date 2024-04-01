@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2024 at 05:44 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Apr 01, 2024 at 07:40 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `weddoard1`
+-- Database: `wabboard`
 --
 
 -- --------------------------------------------------------
@@ -29,8 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL
+  `name` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+(1, 'เรื่องเรียน'),
+(2, 'เรื่องกีฬา'),
+(3, 'เรื่องทั่วไป'),
+(4, 'เพื่อนบ้าน');
 
 -- --------------------------------------------------------
 
@@ -40,7 +50,7 @@ CREATE TABLE `category` (
 
 CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
-  `content` varchar(20148) COLLATE utf8_unicode_ci NOT NULL,
+  `content` varchar(20148) NOT NULL,
   `post_data` datetime NOT NULL,
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL
@@ -54,8 +64,8 @@ CREATE TABLE `comment` (
 
 CREATE TABLE `post` (
   `id` int(11) NOT NULL,
-  `title` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `content` varchar(2048) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(128) NOT NULL,
+  `content` varchar(2048) NOT NULL,
   `post_date` datetime NOT NULL,
   `cat_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
@@ -69,12 +79,12 @@ CREATE TABLE `post` (
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `login` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `gender` char(1) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `role` char(1) COLLATE utf8_unicode_ci NOT NULL
+  `login` varchar(32) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `gender` char(1) NOT NULL,
+  `email` varchar(32) NOT NULL,
+  `role` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -113,7 +123,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `comment`

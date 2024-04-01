@@ -13,7 +13,7 @@ session_start();
 </head>
 <body>
 <div class="container">
-        <h1 style="text-align: center;" class="mt-3">Webboard wtnwp</h1>
+<h1 style="text-align: center;font-size: 54px;"class="mt-3">Webboard wtnwp</h1>
         <?php include "nav.php" ?>
         <div class="row mt-4">
             <div class="col-lg-3 col-md-2 col-sm-1"></div>
