@@ -7,7 +7,7 @@ $name=$_POST['name'];
 $gender=$_POST['gender'];
 $email=$_POST['email'];
  
-$conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+$conn=new PDO("mysql:host=localhost;dbname=wabboard;charset=utf8","root","");
 $sql="SELECT * FROM user where login='$login'";
 $result=$conn->query($sql);
 if($result ->rowCount()==1)

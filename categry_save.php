@@ -2,7 +2,7 @@
     session_start();
 
     $add_cate=$_POST['add_category'];
-    $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+    $conn=new PDO("mysql:host=localhost;dbname=wabboard;charset=utf8","root","");
 
 
     $sql="INSERT INTO category (name) VALUES ('$add_cate') ";

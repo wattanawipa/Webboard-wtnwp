@@ -21,7 +21,7 @@ session_start();
             <lable>หมวดหมู่</lable>
             <span class="dropdown">
                 <?php 
-                    $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+                    $conn=new PDO("mysql:host=localhost;dbname=wabboard;charset=utf8","root","");
                 ?>
                 <button class="btn btn-white-50 btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -55,7 +55,7 @@ session_start();
     </div>
     <table class="table table-striped mt-4 ">
         <?php
-        $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+        $conn=new PDO("mysql:host=localhost;dbname=wabboard;charset=utf8","root","");
         if(isset($_GET['id'])){
             $sql="SELECT t3.name,t1.title,t1.id,t2.login,t1.post_date,t2.id as 'user_id' FROM post as t1
             INNER JOIN user as t2 ON (t1.user_id=t2.id)

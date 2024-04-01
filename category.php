@@ -54,7 +54,7 @@ session_start();
                     <tr> <th>ลำดับ</th> <th>หมวดหมู่</th> <th>จัดการ</th> </tr>
 
                     <?php 
-                        $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+                        $conn=new PDO("mysql:host=localhost;dbname=wabboard;charset=utf8","root","");
                         $sql= "SELECT * FROM category";
                         $i=0;
 

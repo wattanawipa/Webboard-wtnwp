@@ -18,7 +18,7 @@
 
             <?php
                 $sql= "SELECT user_id FROM post WHERE post.id=$_GET[id]";
-                $conn=new PDO("mysql:host=localhost;dbname=webboard;charset=utf8","root","");
+                $conn=new PDO("mysql:host=localhost;dbname=wabboard;charset=utf8","root","");
                     foreach($conn->query($sql) as $row){
                         if(!isset($_SESSION['id']) || $_SESSION['user_id']!=$row['user_id'] ){
                             header("location:index.php");
